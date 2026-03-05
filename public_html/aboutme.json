@@ -1,0 +1,38 @@
+[
+    {
+        "image": "./images/aboutme300x300.jpg",
+        "title": "I'm Sam Vermeir",
+        "description": [
+            "a 22-year old senior game development student Digital Arts & Entertainment at Howest in Kortrijk (Belgium).",
+            "My best potential is when I can work in small/medium teams. I think teamwork is an essential part of the game-making process. A game can be carried to a whole other level when working in a well-oiled, communicative and versatile team.",
+            "I can work on the whole game pipeline but my main focus is gameplay programming with an interest in AI development."
+        ],
+        "socials":[
+            {
+                "Name":"Sketchfab",
+                "icon":"./images/Project1/ProjectImage.png",
+                "url":"www.google.com"
+            },
+            {
+                "Name":"Instagram",
+                "icon":"./images/Project1/ProjectImage.png",
+                "url":"www.google.com"
+            },
+            {
+                "Name":"Email",
+                "icon":"./images/Project1/ProjectImage.png",
+                "url":"www.google.com"
+            },
+            {
+                "Name":"Linkedin",
+                "icon":"./images/Project1/ProjectImage.png",
+                "url":"www.google.com"
+            },
+            {
+                "Name":"Artstation",
+                "icon":"./images/Project1/ProjectImage.png",
+                "url":"www.google.com"
+            }
+        ]
+    }
+]

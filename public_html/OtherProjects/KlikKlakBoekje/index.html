@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klik klak boekje</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    #word-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .word-part {
+      font-size: 4rem;
+      font-weight: bold;
+      margin: 0;
+      border: 3px solid #007bff;
+      border-radius: 10px;
+      width: 120px;
+      height: 120px;
+      text-align: center;
+      background-color: white;
+      position: relative;
+      perspective: 1000px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      transform: rotateX(0deg);
+    }
+    .flip-wrapper span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      font-size: 4rem;
+      font-weight: bold;
+    }
+    .flip-wrapper .front {
+      transform: rotateX(0deg);
+    }
+    .flip-wrapper .back {
+      transform: rotateX(180deg);
+    }
+    .word-part.is-flipped .flip-wrapper {
+      transform: rotateX(180deg);
+    }
+    button {
+      font-size: 2rem;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #counter {
+      font-size: 1.8rem;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Klik klak boekje</h1>
+  <div id="word-container">
+    <div id="first-part" class="word-part">
+      <div class="flip-wrapper">
+        <span class="front">--</span>
+        <span class="back">--</span>
+      </div>
+    </div>
+    <div id="middle-part" class="word-part">
+      <div class="flip-wrapper">
+        <span class="front">--</span>
+        <span class="back">--</span>
+      </div>
+    </div>
+    <div id="last-part" class="word-part">
+      <div class="flip-wrapper">
+        <span class="front">--</span>
+        <span class="back">--</span>
+      </div>
+    </div>
+  </div>
+  <button onclick="generateWord()">Nieuw woord</button>
+  <div id="counter">Aantal woorden: 0</div>
+
+  <script>
+        // Arrays based on the image data
+        const firstLetters = ['g','l','j','w','h','z','d','b','t','n','v','r','p','s','m','k',' '];
+        const middleLetters = ['ui','au','uu','ou','ie','eu','u','a','o','ij','oe','oo','ee','e','aa','i'];
+        const lastLetters = ['g','l','d','b','t','n','t','p','s','m','k',' '];
+
+    let wordCount = 0;
+
+    function getRandomElement(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function flipPart(partId, newText) {
+      const part = document.getElementById(partId);
+      const wrapper = part.querySelector('.flip-wrapper');
+      const front = wrapper.querySelector('.front');
+      const back = wrapper.querySelector('.back');
+
+      // Reset instantly if already flipped.
+      if (part.classList.contains('is-flipped')) {
+        wrapper.style.transition = 'none';
+        part.classList.remove('is-flipped');
+        // Force reflow.
+        void wrapper.offsetWidth;
+        wrapper.style.transition = 'transform 0.6s ease';
+      }
+
+      // Set new text on the back face.
+      back.textContent = newText;
+
+      // Add the is-flipped class to animate the flip.
+      part.classList.add('is-flipped');
+
+      // After the animation, update the front face (optional).
+      setTimeout(() => {
+        front.textContent = newText;
+      }, 600);
+    }
+
+    function generateWord() {
+      const first = getRandomElement(firstLetters);
+      const middle = getRandomElement(middleLetters);
+      const last = getRandomElement(lastLetters);
+
+      // Flip each part.
+      flipPart('first-part', first);
+      flipPart('middle-part', middle);
+      flipPart('last-part', last);
+
+      // Update the word counter.
+      wordCount++;
+      document.getElementById('counter').textContent = `Words generated: ${wordCount}`;
+    }
+  </script>
+</body>
+</html>

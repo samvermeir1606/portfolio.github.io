@@ -1,0 +1,50 @@
+[
+     {   
+          "image": "./Projects/SpaceTraders/images/ProjectImage.png", 
+          "title": "Space Traders",    
+          "description": "Description of Project 2",
+          "url": "./Projects/SpaceTraders/SpaceTraders.html" ,
+          "baseline":"A Python fleetmanager for an API based space game",
+          "tag":"Programming"
+     },
+     {   
+         "image": "./Projects/BigBoysInSpace/images/ProjectImage.png",
+         "title": "Big boys in space",
+         "description": "Description of Project 1",
+         "url": "./Projects/BigBoysInSpace/bigboysinspace.html",
+         "baseline":"A 3rd-person co-op action game set in an alien environment",
+         "tag":"Game development"
+    },
+    {   
+         "image": "./images/Project3/ProjectImage.png",
+         "title": "AI Companion",
+         "description": "Description of Project 1",
+         "url": "./project1.html",
+         "baseline":"An AI companion with voice input and output, with the focus on helping elderly people",
+         "tag":"Programming"
+    },
+    {   
+         "image": "./images/Project4/ProjectImage.png", 
+         "title": "M1911 Pistol",    
+         "description": "Description of Project 2",
+         "url": "./project1.html",
+         "baseline":"Based on the Colt M1911",
+         "tag":"3D"
+    },
+    {   
+         "image": "./images/Project5/ProjectImage.png",
+         "title": "Gas Bottle",
+         "description": "Description of Project 1",
+         "url": "./project1.html",
+         "baseline":"Based on a Calor gas bottle",
+         "tag":"3D"
+    },
+    {   
+         "image": "./images/Project6/ProjectImage.png", 
+         "title": "Flail",    
+         "description": "Description of Project 2",
+         "url": "./project1.html",
+         "baseline":"Medieval weapon",
+         "tag":"3D"
+    }
+]

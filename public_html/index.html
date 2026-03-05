@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Portfolio Sam Vermeir - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/Favicon.png">
+
+  </head>
+  <body>
+    <header>
+      <div class="Logo">
+        <a href="./index.html">
+          <img src="./images/Logo.svg" alt="Logo">
+      </a>
+      </div>
+
+        <div class="navigationdivider"></div>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Portfolio</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./files/CV Sam Vermeir - UX Designer.pdf" target="_blank">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+        <div class="portfolio-header">
+            <h2>Portfolio</h2>
+            <span>Browse through my projects.</span>
+        </div>
+        <div id="project-grid-container"></div>
+    </main>
+    <footer>
+        <p>&copy;  Sam Vermeir</p>
+    </footer>
+    
+    </footer>
+    <script>
+        fetch('./projects.json')
+          .then(response => response.json())
+          .then(projects => {
+            const projectGridContainer = document.getElementById('project-grid-container');
+  
+            const projectGrid = document.createElement('div');
+            projectGrid.className = 'project-grid';
+  
+            projects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.className = 'project-item';
+                projectItem.addEventListener('click', () => {
+                     window.location.href = project.url;
+                });
+  
+
+              const projectTag = document.createElement('p');
+              projectTag.textContent = project.tag;
+
+
+              const projectImage = document.createElement('img');
+              projectImage.src = project.image;
+              projectImage.alt = project.title;
+  
+              const projectTitle = document.createElement('h3');
+              projectTitle.textContent = project.title;
+  
+              //const projectDescription = document.createElement('p');
+              //projectDescription.textContent = project.description;
+  
+              const projectBaseline = document.createElement('span');
+             projectBaseline.textContent = project.baseline;
+
+              projectItem.appendChild(projectTag);
+              projectItem.appendChild(projectImage);
+              projectItem.appendChild(projectTitle);
+              //projectItem.appendChild(projectDescription);
+              projectItem.appendChild(projectBaseline);
+
+              projectGrid.appendChild(projectItem);
+            });
+  
+            projectGridContainer.appendChild(projectGrid);
+          })
+          .catch(error => console.error(error));
+      </script>
+  </body>
+</html>
